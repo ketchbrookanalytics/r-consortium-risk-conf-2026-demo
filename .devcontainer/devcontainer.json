@@ -1,0 +1,55 @@
+// https://github.com/rocker-org/devcontainer-features
+{
+	"name": "My Awesome Report",
+	"build": {
+		"dockerfile": "Dockerfile"
+	},
+
+	// Features to add to the dev container. More info: https://containers.dev/features.
+	"features": {
+
+		// Install Quarto CLI
+		// More info: https://github.com/rocker-org/devcontainer-features/tree/main/src/quarto-cli
+		"ghcr.io/rocker-org/devcontainer-features/quarto-cli:1": {
+			"installChromium": true // need this for rendering mermaidjs diagrams to PDF/Word/etc.
+		},
+
+		// Configure R on Ubuntu
+		// More info: https://github.com/rocker-org/devcontainer-features/tree/main/src/r-apt.
+		"ghcr.io/rocker-org/devcontainer-features/r-apt:latest": {},
+
+		// Install additional R package dependencies
+		// Note: httpgd has been archived on CRAN as of 2025-04-23, see
+		// https://cran.r-project.org/web/packages/httpgd/index.html
+		"ghcr.io/rocker-org/devcontainer-features/r-packages:1": {
+			"packages": "dplyr, ggplot2, github::nx10/httpgd, languageserver, rmarkdown",
+			"installSystemRequirements": true
+		}
+
+	},
+
+	// Wait to install R packages until R is installed. More info: https://github.com/rocker-org/devcontainer-features/tree/main/src/apt-packages#installation-order
+	"overrideFeatureInstallOrder": [
+		"ghcr.io/rocker-org/devcontainer-features/r-apt"
+	],
+
+	// Configure tool-specific properties.
+	"customizations": {
+		// Settings for VS Code.
+		"vscode": {
+			"settings": {
+				"editor.rulers": [80]
+			},
+			// We also recommend installing the `tomoki1207.pdf` extension,
+			// but it needs to be installed locally (not in Dev Container)
+			"extensions": [
+				"quarto.quarto",
+				"RDebugger.r-debugger",
+				"REditorSupport.r"
+			]
+		}
+	},
+
+	// Connect as root user. More info: https://aka.ms/dev-containers-non-root.
+	"remoteUser": "root"
+}
