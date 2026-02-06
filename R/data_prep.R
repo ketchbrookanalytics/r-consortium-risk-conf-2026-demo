@@ -2,13 +2,13 @@
 #'
 #' Reads the synthetic credit data from a CSV file.
 #'
-#' @param filepath Path to the CSV file containing credit data
+#' @param file Path to the CSV file containing credit data
 #'
 #' @return A data frame containing the credit data with loan_type as a factor.
 #'
 #' @examples
-#' credit_data <- read_credit_data()
-read_credit_data <- function(filepath = "data/synthetic_credit_data.csv") {
+#' credit_data <- read_credit_data(file = "data/synthetic_credit_data.csv")
+read_credit_data <- function(file) {
   # Define the factor levels for the `loan_type` column variable
   loan_type_levels <- c(
     "Auto",
@@ -19,7 +19,7 @@ read_credit_data <- function(filepath = "data/synthetic_credit_data.csv") {
 
   # Read in the CSV while defining the column types
   readr::read_csv(
-    filepath,
+    file = file,
     col_types = readr::cols(
       loan_id = readr::col_character(),
       default = readr::col_logical(),

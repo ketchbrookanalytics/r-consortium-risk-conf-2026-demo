@@ -1,6 +1,6 @@
 // https://github.com/rocker-org/devcontainer-features
 {
-	"name": "My Awesome Report",
+	"name": "Demo Model Validation Report",
 	"build": {
 		"dockerfile": "Dockerfile"
 	},
@@ -22,7 +22,7 @@
 		// Note: httpgd has been archived on CRAN as of 2025-04-23, see
 		// https://cran.r-project.org/web/packages/httpgd/index.html
 		"ghcr.io/rocker-org/devcontainer-features/r-packages:1": {
-			"packages": "dplyr, ggplot2, gt, github::nx10/httpgd, languageserver, readr, rmarkdown, targets",
+			"packages": "broom, dplyr, fs, ggplot2, gt, github::nx10/httpgd, languageserver, quarto, readr, rmarkdown, targets, usethis, visNetwork",
 			"installSystemRequirements": true
 		}
 

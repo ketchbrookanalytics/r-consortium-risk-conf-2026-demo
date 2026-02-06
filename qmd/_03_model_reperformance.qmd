@@ -1,0 +1,21 @@
+
+The validation team re-fit the GLM model described in the model documentation.
+
+@tbl-model-comparison displays the parameters found in the model documentation to the parameters derived by the validation re-performance, along with any discrepancies between the two.
+
+```{r}
+#| label: tbl-model-comparison
+#| tbl-cap: Model Comparison Table
+
+targets::tar_read(model_comparison_tbl)
+```
+
+::: {.callout-note}
+
+## Recommendation: Flip Coefficient Sign
+
+It appears that Company ABC inadvertantly negated the coefficient for `log(principal_balance)` in the model documentation.
+
+The validation team recommends that Company ABC correct the model documentation and work with the model implementation team to make sure that the production model is correctly parameterized.
+
+:::

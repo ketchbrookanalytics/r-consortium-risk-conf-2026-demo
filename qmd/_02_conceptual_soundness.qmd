@@ -1,0 +1,48 @@
+### Model Specification
+
+The probability of default employs a generalized linear model (GLM) with a binomial family and logit link function to estimate the probability of loan default. This methodological choice is conceptually appropriate for binary classification tasks in credit risk modeling, as the logistic regression framework naturally constrains predicted probabilities to the [0, 1] interval and provides interpretable coefficient estimates in terms of log-odds. The model specification incorporates both macroeconomic variables—unemployment rate, Consumer Price Index (CPI), and GDP growth rate—and loan-level characteristics, including log-transformed principal balance, credit score, debt-to-income (DTI) ratio, and interest rate. The inclusion of macroeconomic factors is consistent with established credit risk modeling practices, as default rates are well-documented to exhibit sensitivity to broader economic conditions. The log transformation applied to principal balance is theoretically justified, as the relationship between loan size and default risk is generally expected to be multiplicative rather than additive in nature.
+
+### Coefficient Directionality
+
+From a conceptual standpoint, the directional expectations of the model coefficients are economically intuitive. Higher unemployment rates and elevated DTI ratios are expected to increase default probability, while higher credit scores and stronger GDP growth should be protective against default. The inclusion of interest rate as a predictor captures the additional burden of debt servicing costs, though the validation team notes that interest rate may also serve as a proxy for unobserved borrower risk characteristics, introducing potential endogeneity concerns. Notably absent from the specification are interaction terms between macroeconomic and loan-level variables, which could capture differential sensitivity of borrower segments to economic stress. Additionally, the model does not account for temporal dynamics such as loan seasoning effects or vintage-level variation, which are commonly incorporated in more advanced credit loss frameworks. Despite these limitations, the overall model architecture represents a reasonable baseline approach for estimating through-the-cycle default probabilities.
+
+::: {.callout-note}
+
+## Recommendation: Lag Effect Considerations
+
+The validation team recommends that Company ABC considers evaluating *lag* transformations of the macroeconomic independent variables. Not only could there be higher potential for statistical correlation, but from a *causal* standpoint it may take time (years) between when a macroeconomic downturn is observed and when it flows through into the financial performance -- and default rates -- of bank portfolios. I.e., the effect of what happens in the broader macroeconomic environment may take time to affect default rates in Company ABC's portfolio.
+
+:::
+
+### Dependent Variable {#sec-dependent-variable}
+
+```{r}
+targets::tar_load(credit_data)
+
+num_obs <- nrow(credit_data)
+
+num_obs_default <- credit_data |>
+    dplyr::filter(default == TRUE) |>
+    nrow()
+```
+
+The model is estimated on a dataset of `r num_obs` loan observations, of which only `r num_obs_default` observations are classified as defaults. This class imbalance raises significant concerns regarding model overfitting and the reliability of estimated coefficients [see @kuhn2013, pp. 62-64]. With a low event rate and a relatively large number of predictors (seven independent variables), the model is at risk of overfitting to the idiosyncratic characteristics of the few default observations rather than capturing generalizable patterns of credit risk. In small-sample, rare-event settings, maximum likelihood estimation in logistic regression is known to produce biased coefficient estimates—often inflated in magnitude—and overly optimistic in-sample performance metrics that do not generalize well to out-of-sample data.
+
+The practical implications of this class imbalance are multifold. First, standard goodness-of-fit measures such as overall classification accuracy can be misleading, as a naïve model that predicts no defaults would achieve 98% accuracy despite having zero discriminatory power. Second, the variance of coefficient estimates is likely to be elevated, meaning that small perturbations in the training data could produce materially different model parameterizations.
+
+::: {.callout-note}
+
+## Recommendation: Evaluate Class Imbalance and Overfitting Risk
+
+The validation team recommends that Company ABC evaluate the risk associated with the class imbalance present in the model development sample. With only 10 default events out of 500 observations (a 2.0% default rate), this could likely lead to model predictions that are too optimistic.
+
+Company ABC should consider one or more of the following remediation strategies:
+
+- **Penalized regression techniques** (e.g., Firth's bias-reduced logistic regression, LASSO, or ridge regression) to stabilize coefficient estimates in the presence of rare events.
+- **Resampling methods** such as Synthetic Minority Oversampling Technique (SMOTE), undersampling of the majority class, or stratified bootstrap procedures to improve model training on balanced data.
+- **Cross-validation** with stratified folds to ensure that default events are represented in each fold, providing more robust estimates of out-of-sample performance.
+- **Variable reduction** to decrease the number of predictors, thereby improving the EPV ratio and reducing the dimensionality of the estimation problem.
+
+Until these concerns are adequately addressed, the validation team considers the current model estimates to be potentially unreliable for production use in credit loss forecasting.
+
+:::

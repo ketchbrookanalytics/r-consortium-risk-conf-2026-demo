@@ -1,0 +1,67 @@
+To assess the stability of the validated model, the validation team performed a
+one-at-a-time sensitivity analysis on each continuous predictor. Each predictor
+was swept across its observed range while all remaining predictors were held at
+their median values. The resulting predicted probability of default is plotted
+below.
+
+### Macroeconomic Predictors
+
+@fig-sens-unemployment through @fig-sens-gdp illustrate how the predicted
+default probability responds to changes in the macroeconomic environment.
+
+```{r}
+#| label: fig-sens-unemployment
+#| fig-cap: "Sensitivity of predicted default probability to unemployment rate."
+
+targets::tar_read(sensitivity_plots)[["unemployment_rate"]]
+```
+
+```{r}
+#| label: fig-sens-cpi
+#| fig-cap: "Sensitivity of predicted default probability to Consumer Price Index."
+
+targets::tar_read(sensitivity_plots)[["cpi"]]
+```
+
+```{r}
+#| label: fig-sens-gdp
+#| fig-cap: "Sensitivity of predicted default probability to GDP growth rate."
+
+targets::tar_read(sensitivity_plots)[["gdp_growth"]]
+```
+
+### Loan-Level Predictors
+
+@fig-sens-principal through @fig-sens-interest show the model's sensitivity to
+loan-level characteristics.
+
+```{r}
+#| label: fig-sens-principal
+#| fig-cap: "Sensitivity of predicted default probability to principal balance."
+
+targets::tar_read(sensitivity_plots)[["principal_balance"]]
+```
+
+```{r}
+#| label: fig-sens-credit
+#| fig-cap: "Sensitivity of predicted default probability to credit score."
+
+targets::tar_read(sensitivity_plots)[["credit_score"]]
+```
+
+```{r}
+#| label: fig-sens-dti
+#| fig-cap: "Sensitivity of predicted default probability to debt-to-income ratio."
+
+targets::tar_read(sensitivity_plots)[["dti_ratio"]]
+```
+
+```{r}
+#| label: fig-sens-interest
+#| fig-cap: "Sensitivity of predicted default probability to interest rate."
+
+targets::tar_read(sensitivity_plots)[["interest_rate"]]
+```
+
+All predictor effects are monotonic and directionally consistent with the model
+specification described in [Conceptual Soundness](#sec-conceptual-soundness). The model is most sensitive to **debt-to-income ratio** and **unemployment rate**, and least sensitive to **CPI** and **GDP growth rate**.

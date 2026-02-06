@@ -16,11 +16,14 @@
 #' @return A fitted `glm` model object
 #'
 #' @examples
-#' # Read in the data from CSV
-#' credit_data <- read_credit_data()
+#' # Run the {targets} pipeline
+#' targets::tar_make()
 #'
-#' # Fit the GLM Model and retrieve the model parameters
-#' fit_glm_loss_model(credit_data)
+#' # Load the `credit_data` data frame into memory
+#' targets::tar_load(credit_data)
+#'
+#' # Fit the GLM Model using the and retrieve the model parameters
+#' fit_glm_loss_model(data = credit_data)
 fit_glm_loss_model <- function(data) {
   cli::cli_alert_info("Fitting glm model...")
 

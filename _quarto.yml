@@ -5,7 +5,7 @@ project:
 
 editor: source
 execute:
-  echo: true
+  echo: false
 
 format:
   typst:
