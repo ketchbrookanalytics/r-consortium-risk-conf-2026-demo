@@ -1,5 +1,5 @@
 project:
-  title: "My Awesome Report using VSCode Devcontainers"
+  title: My Example Model Validation Report
   execute-dir: project
   output-dir: _output
 

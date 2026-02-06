@@ -1,0 +1,52 @@
+### Model History & Purpose
+
+The Current Expected Credit Loss ("CECL") model developed by Company ABC was developed to meet the 2016 CECL standard regulatory requirement for a more *forward-looking* estimation of credit losses by financial institutions in the United States.
+
+### Overall Conclusions
+
+The CECL model developed by Company ABC appears to be statistically robust, conceptually sound, and correctly implemented. The validation team independently replicated each of the algorithmically-derived component models for *probability of default ("PD")*, *loss given default ("LGD")* and *exposure at default ("EAD")* model development processes in the code repository associted with this report.
+
+### A Note on Reproducibility
+
+A unique aspect of Ketchbrook's model validation practice is that all validation work is performed in code scripts backed by a version-controlled repository (i.e., folder). This means that any narrative text, tables, figures, equations, slides, etc. contained in this validation report will be *fully reproducible* days, months, or years from now. Further, one can trace the lineage of the results in the report directly to the source data and applied logic. @fig-reproducibility-flow describes this workflow.
+
+```{mermaid}
+%%| label: fig-reproducibility-flow
+%%| fig-cap: Reproducible Validation Workflow
+%%| fig-align: center
+%%| fig-pos: H
+
+flowchart LR
+A[(Source Data)] --> B(["Logic (Code)"]) --> C[["Results (PDF Report)"]]
+```
+
+::: {.callout-tip}
+## Why Is Reproducibility Important?
+
+In short, *"Reproducibility = Transparency"*. To the uninitiated, the need for reproducibility may not be entirely clear. However, especially in a validation setting, the *inability* to reproduce the results of the validator would be catastrophic to the integrity of the validation report and opinions therein. As a model validation vendor, Ketchbrook Analytics is committed to providing a deliverable whose results can be identically reproduced not just days or weeks, but years and decades later. This is a focus of our organizational strategy that differentiates us from most vendors in this space.
+:::
+
+For example, the RFP response document you are currently reading was authored with two open source pieces of software, [Quarto](https://quarto.org/) and [R](https://www.r-project.org/), and is rendered *programmatically*. The script to render this document is contained in a version-controlled repository, and this document itself is a fully reproducible piece of software that anyone else with access to the repository can run and subsequently produce the *exact* same document as the one you are reading.
+
+### Observations and Recommendations
+
+The validation team rated the following observations and recommendations on a three-tier scale in terms of risk posed to Company ABC:
+
+- **High** 🔴 risk
+- **Moderate** 🟠 risk
+- **Low** 🟢 risk
+
+1. [Visualize MEV Selection](#sec-data-integrity):
+    + **Category**: Model Development
+    + **Rating**: **Moderate** 🟠
+    + **Recommendation**: Use a visualization-based approach instead of statistical models for evaluating appropriateness of macroeconomic variables due to small sample sizes.
+
+2. [Consider Lag Effects](#sec-data-integrity):
+    + **Category**: Model Development
+    + **Rating**: **Moderate** 🟠
+    + **Recommendation**: Evaluate lag transformations of macroeconomic independent variables, as there may be a time delay between macroeconomic downturns and their impact on default rates.
+
+3. [Only Measure Model Accuracy Against Out-of-Sample Data](#sec-model-performance):
+    + **Category**: Model Accuracy
+    + **Rating**: **Low** 🟢
+    + **Recommendation**: Evaluate model accuracy only against out-of-sample data for an unbiased measure of model effectiveness.

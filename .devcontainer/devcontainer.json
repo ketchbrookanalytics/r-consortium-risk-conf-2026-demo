@@ -22,7 +22,7 @@
 		// Note: httpgd has been archived on CRAN as of 2025-04-23, see
 		// https://cran.r-project.org/web/packages/httpgd/index.html
 		"ghcr.io/rocker-org/devcontainer-features/r-packages:1": {
-			"packages": "dplyr, ggplot2, github::nx10/httpgd, languageserver, rmarkdown",
+			"packages": "dplyr, ggplot2, gt, github::nx10/httpgd, languageserver, readr, rmarkdown, targets",
 			"installSystemRequirements": true
 		}
 
@@ -38,14 +38,23 @@
 		// Settings for VS Code.
 		"vscode": {
 			"settings": {
-				"editor.rulers": [80]
+				"editor.rulers": [80],
+	    		"[r]": {
+    			    "editor.formatOnSave": true,
+    			    "editor.defaultFormatter": "Posit.air-vscode"
+    			},
+    			"[quarto]": {
+    			    "editor.formatOnSave": true,
+    			    "editor.defaultFormatter": "quarto.quarto"
+    			}
 			},
 			// We also recommend installing the `tomoki1207.pdf` extension,
 			// but it needs to be installed locally (not in Dev Container)
 			"extensions": [
 				"quarto.quarto",
 				"RDebugger.r-debugger",
-				"REditorSupport.r"
+				"REditorSupport.r",
+				"Posit.air-vscode"
 			]
 		}
 	},

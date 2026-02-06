@@ -1,0 +1,8 @@
+---
+title: CECL Model Validation Report
+subtitle: For Company ABC
+---
+
+## Executive Summary
+
+{{< include /qmd/_01_executive_summary.qmd >}}
