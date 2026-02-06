@@ -33,12 +33,12 @@ credit_score <- rnorm(n_loans, mean = 680, sd = 60)
 credit_score <- pmax(pmin(round(credit_score), 850), 300)
 
 # Debt-to-income ratio (%) - realistic range
-dti_ratio <- rbeta(n_loans, 2, 5) * 60  # Skewed toward lower values, max ~60%
+dti_ratio <- rbeta(n_loans, 2, 5) * 60 # Skewed toward lower values, max ~60%
 
 # Interest rate (%) - influenced by credit score
 base_rate <- 5
 interest_rate <- base_rate + (750 - credit_score) / 50 + rnorm(n_loans, 0, 0.5)
-interest_rate <- pmax(interest_rate, 3)  # Floor at 3%
+interest_rate <- pmax(interest_rate, 3) # Floor at 3%
 
 # Loan term (months)
 loan_term <- sample(
@@ -64,14 +64,14 @@ loan_type <- sample(
 
 # Create linear predictor for default probability using logistic model
 # Coefficients chosen to create realistic default rates (~5-15%)
-log_odds <- -4.5 +                           # Intercept
-  0.25 * (unemployment_rate - 5) +           # Higher unemployment, more defaults
-  0.01 * (cpi - 300) +                       # Higher CPI → slightly more defaults
- -0.15 * (gdp_growth - 2.5) +                # Lower GDP growth → more defaults
-  0.3 * log10(principal_balance / 10000) +   # Larger loans → more defaults
- -0.03 * (credit_score - 680) / 10 +         # Lower credit score → more defaults
-  0.05 * (dti_ratio - 30) +                  # Higher DTI → more defaults
-  0.1 * (interest_rate - 8)                  # Higher rate → more defaults
+log_odds <- -4.5 + # Intercept
+  0.25 * (unemployment_rate - 5) + # Higher unemployment, more defaults
+  0.01 * (cpi - 300) + # Higher CPI → slightly more defaults
+  -0.15 * (gdp_growth - 2.5) + # Lower GDP growth → more defaults
+  0.3 * log10(principal_balance / 10000) + # Larger loans → more defaults
+  -0.03 * (credit_score - 680) / 10 + # Lower credit score → more defaults
+  0.05 * (dti_ratio - 30) + # Higher DTI → more defaults
+  0.1 * (interest_rate - 8) # Higher rate → more defaults
 
 # Convert to probability
 default_prob <- 1 / (1 + exp(-log_odds))

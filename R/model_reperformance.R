@@ -22,7 +22,6 @@
 #' # Fit the GLM Model and retrieve the model parameters
 #' fit_glm_loss_model(credit_data)
 fit_glm_loss_model <- function(data) {
-
   cli::cli_alert_info("Fitting glm model...")
 
   # For demo purposes, let's pretend this model takes a long time to fit
@@ -44,10 +43,7 @@ fit_glm_loss_model <- function(data) {
 
   # Return the model parameters
   broom::tidy(mdl)
-
 }
-
-
 
 
 #' Get Model Parameters from Documentation
@@ -63,17 +59,15 @@ fit_glm_loss_model <- function(data) {
 #' @examples
 #' get_model_params_from_docs()
 get_model_params_from_docs <- function() {
-
   tibble::tribble(
-    ~term, ~estimate,
-    "(Intercept)", 5.0288,
-    "unemployment_rate", 0.4065,
-    "cpi", -0.0092,
-    "gdp_growth", -0.0138,
-    "log(principal_balance)", -0.2113,   # this is purposely incorrect
-    "credit_score", -0.0159,
-    "dti_ratio", 0.0538,
-    "interest_rate", -0.2893
+    ~term                    , ~estimate ,
+    "(Intercept)"            ,  5.0288   ,
+    "unemployment_rate"      ,  0.4065   ,
+    "cpi"                    , -0.0092   ,
+    "gdp_growth"             , -0.0138   ,
+    "log(principal_balance)" , -0.2113   , # this is purposely incorrect
+    "credit_score"           , -0.0159   ,
+    "dti_ratio"              ,  0.0538   ,
+    "interest_rate"          , -0.2893
   )
-
 }

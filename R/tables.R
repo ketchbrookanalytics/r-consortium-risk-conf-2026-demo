@@ -6,9 +6,10 @@
 #'   defined in the model documentation
 #'
 #' @return A GT table object
-make_model_comparison_tbl <- function(model_stats_validation,
-                                      model_stats_from_docs) {
-
+make_model_comparison_tbl <- function(
+  model_stats_validation,
+  model_stats_from_docs
+) {
   model_stats_validation |>
     dplyr::select(
       term,
@@ -40,5 +41,4 @@ make_model_comparison_tbl <- function(model_stats_validation,
     gt::tab_options(
       table.font.names = "Roboto"
     )
-
 }

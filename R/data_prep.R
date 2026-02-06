@@ -9,7 +9,6 @@
 #' @examples
 #' credit_data <- read_credit_data()
 read_credit_data <- function(filepath = "data/synthetic_credit_data.csv") {
-
   # Define the factor levels for the `loan_type` column variable
   loan_type_levels <- c(
     "Auto",
@@ -36,5 +35,4 @@ read_credit_data <- function(filepath = "data/synthetic_credit_data.csv") {
       loan_type = readr::col_factor(levels = loan_type_levels)
     )
   )
-
 }
