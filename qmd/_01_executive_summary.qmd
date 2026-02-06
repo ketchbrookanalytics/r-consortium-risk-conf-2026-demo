@@ -10,23 +10,23 @@ The PD model developed by Company ABC appears to be statistically robust, concep
 
 The validation team rated the following observations and recommendations on a three-tier scale in terms of risk posed to Company ABC:
 
-- **High** 🔴 risk
-- **Moderate** 🟠 risk
-- **Low** 🟢 risk
+- **High** risk
+- **Moderate** risk
+- **Low** risk
 
 1. [Remediate Incorrect Sign for Coefficient](#sec-model-reperformance):
     + **Category**: Model Parameters
-    + **Rating**: **Moderate** 🔴
+    + **Rating**: **Moderate**
     + **Recommendation**: It appears that the model documentation incorrectly displays the coefficient for `log(Principal Balance)` as negative when it should be positive. This should be corrected in the documentation, and the model implementation team should make sure that the production model is correctly parameterized.
 
 2. [Consider Lag Effects](#sec-conceptual-soundness):
     + **Category**: Model Development
-    + **Rating**: **Moderate** 🟠
+    + **Rating**: **Moderate**
     + **Recommendation**: Evaluate lag transformations of macroeconomic independent variables, as there may be a time delay between macroeconomic downturns and their impact on default rates.
 
 3. [Evaluate Class Imbalance and Overfitting Risk](#sec-conceptual-soundness)
     + **Category**: Model Development
-    + **Rating**: **Moderate** 🟠
+    + **Rating**: **Moderate**
     + **Recommendation**: Given the few number of default events in the model training data, evaluate the risk of the probability of default model being overfit and, if necessary, employ one of the [recommended remediation strategies](#sec-dependent-variable).
 
 {{< pagebreak >}}

@@ -22,7 +22,7 @@
 		// Note: httpgd has been archived on CRAN as of 2025-04-23, see
 		// https://cran.r-project.org/web/packages/httpgd/index.html
 		"ghcr.io/rocker-org/devcontainer-features/r-packages:1": {
-			"packages": "broom, dplyr, fs, ggplot2, gt, github::nx10/httpgd, languageserver, quarto, readr, rmarkdown, targets, usethis, visNetwork",
+			"packages": "broom, dplyr, fs, ggplot2, gt, github::nx10/httpgd, languageserver, quarto, readr, rmarkdown, targets, tarchetypes, usethis, visNetwork",
 			"installSystemRequirements": true
 		}
 
