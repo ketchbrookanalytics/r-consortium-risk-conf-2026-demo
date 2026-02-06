@@ -5,6 +5,8 @@
 
 # Load packages required to define the pipeline:
 library(targets)
+library(tarchetypes)
+library(quarto)
 
 # Run the R scripts in the R/ folder with your custom functions:
 tar_source()
@@ -59,8 +61,8 @@ list(
   ),
 
   # Render the report to "_output/"
-  tar_target(
+  tar_quarto(
     name = report,
-    command = quarto::quarto_render("report.qmd")
+    path = "report.qmd"
   )
 )
