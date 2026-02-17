@@ -20,10 +20,7 @@ The above command builds the Docker image from the specified `Dockerfile`, and t
 When the image has finished building, run:
 
 ```bash
-docker run --rm \
-  -v "$(pwd)/data:/project/data:ro" \
-  -v "$(pwd)/_output:/project/_output" \
-  ketchbrook/risk-demo
+docker run --rm -v "$(pwd)/data:/project/data:ro" -v "$(pwd)/_output:/project/_output" ketchbrook/risk-demo
 ```
 
 The above command runs a Docker container based upon the built `ketchbrook/risk-demo` image (containing all of our dependencies) and executes the command at the end of the Dockerfile, which **generates the model validation report in a new directory called `_output/`**.
