@@ -31,6 +31,9 @@ RUN R -q -e "install.packages('pak')"
 # lock file
 ENV RENV_CONFIG_PAK_ENABLED=true
 
+# Ensure we properly isolate "dev" packages installed in the Dev Container
+ENV RENV_CONFIG_SANDBOX_ENABLED=false
+
 # Install {renv}
 RUN R -q -e "pak::pkg_install('renv@${RENV_VERSION}')"
 
@@ -52,5 +55,6 @@ COPY report.qmd     report.qmd
 RUN R -q -e "renv::restore()"
 
 # Run the {targets} pipeline when the container starts
+# Note: this won't run when we start a Dev Container
 CMD ["R", "-q", "-e", "targets::tar_make()"]
 
