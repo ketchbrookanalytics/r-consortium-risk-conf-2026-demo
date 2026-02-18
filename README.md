@@ -30,16 +30,12 @@ The middle lines of the above command represent communication between our local 
 - `-v "$(pwd)/data:/project/data:ro"` allows the container "Read-only" access to the local folder named `data/` in the current working directory.
 - `-v "$(pwd)/_output:/project/_output"` allows the container to write to a folder (which may or may not already exist; if it doesn't exist, it will be created) named `_output/` in the current working directory.
 
-
-
-
-
-
 ## Structure
 
 This repository contains the following components:
 
 * [.devcontainer/](.devcontainer/) contains files that specify the Docker-based development environment (i.e., while we're working on the project, we can work in the same exact Docker-ized environment that we'll be handing off to the client)
+    + For more information on using VSCode Dev Containers, see <https://code.visualstudio.com/docs/devcontainers/containers>
 * [assets/](assets/) contains the [Typst](https://quarto.org/docs/output-formats/typst.html) files that help create the report.
     + [typst-template.typ](assets/typst-template.typ) outlines the [Typst template](https://typst.app/docs/tutorial/making-a-template/) that is used to create the report.
     + [typst-show.typ](assets/typst-show.typ) details the mapping of Pandoc metatdata to function arguments in [typst-template.typ](assets/typst-template.typ).
