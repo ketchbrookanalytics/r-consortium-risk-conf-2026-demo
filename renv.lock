@@ -1544,7 +1544,7 @@
     },
     "igraph": {
       "Package": "igraph",
-      "Version": "2.2.1",
+      "Version": "2.2.2",
       "Source": "Repository",
       "Title": "Network Analysis and Visualization",
       "Authors@R": "c( person(\"Gábor\", \"Csárdi\", , \"csardi.gabor@gmail.com\", role = \"aut\", comment = c(ORCID = \"0000-0001-7098-9676\")), person(\"Tamás\", \"Nepusz\", , \"ntamas@gmail.com\", role = \"aut\", comment = c(ORCID = \"0000-0002-1451-338X\")), person(\"Vincent\", \"Traag\", role = \"aut\", comment = c(ORCID = \"0000-0003-3170-3879\")), person(\"Szabolcs\", \"Horvát\", , \"szhorvat@gmail.com\", role = \"aut\", comment = c(ORCID = \"0000-0002-3100-523X\")), person(\"Fabio\", \"Zanini\", , \"fabio.zanini@unsw.edu.au\", role = \"aut\", comment = c(ORCID = \"0000-0001-7097-8539\")), person(\"Daniel\", \"Noom\", role = \"aut\"), person(\"Kirill\", \"Müller\", , \"kirill@cynkra.com\", role = c(\"aut\", \"cre\"), comment = c(ORCID = \"0000-0002-1416-3412\")), person(\"Michael\", \"Antonov\", role = \"ctb\"), person(\"Chan Zuckerberg Initiative\", role = \"fnd\", comment = c(ROR = \"02qenvm24\")), person(\"David\", \"Schoch\", , \"david.schoch@cynkra.com\", role = \"aut\", comment = c(ORCID = \"0000-0003-2952-4812\")), person(\"Maëlle\", \"Salmon\", , \"maelle@cynkra.com\", role = \"aut\", comment = c(ORCID = \"0000-0002-2815-0399\")) )",
@@ -1813,7 +1813,7 @@
     },
     "later": {
       "Package": "later",
-      "Version": "1.4.5",
+      "Version": "1.4.6",
       "Source": "Repository",
       "Type": "Package",
       "Title": "Utilities for Scheduling Functions to Execute Later with Event Loops",
@@ -2938,7 +2938,7 @@
     },
     "tarchetypes": {
       "Package": "tarchetypes",
-      "Version": "0.13.2",
+      "Version": "0.14.0",
       "Source": "Repository",
       "Title": "Archetypes for Targets",
       "Description": "Function-oriented Make-like declarative pipelines for Statistics and data science are supported in the 'targets' R package. As an extension to 'targets', the 'tarchetypes' package provides convenient user-side functions to make 'targets' easier to use. By establishing reusable archetypes for common kinds of targets and pipelines, these functions help express complicated reproducible pipelines concisely and compactly. The methods in this package were influenced by the 'targets' R package. by Will Landau (2018) <doi:10.21105/joss.00550>.",
@@ -2966,6 +2966,7 @@
         "curl (>= 4.3)",
         "knitr (>= 1.28)",
         "nanoparquet",
+        "parsermd",
         "quarto (>= 1.4)",
         "rmarkdown (>= 2.1)",
         "testthat (>= 3.0.0)",
@@ -2982,7 +2983,7 @@
     },
     "targets": {
       "Package": "targets",
-      "Version": "1.11.4",
+      "Version": "1.12.0",
       "Source": "Repository",
       "Title": "Dynamic Function-Oriented 'Make'-Like Declarative Pipelines",
       "Description": "Pipeline tools coordinate the pieces of computationally demanding analysis projects. The 'targets' package is a 'Make'-like pipeline tool for statistics and data science in R. The package skips costly runtime for tasks that are already up to date, orchestrates the necessary computation with implicit parallel computing, and abstracts files as R objects. If all the current output matches the current upstream code and data, then the whole pipeline is up to date, and the results are more trustworthy than otherwise. The methodology in this package borrows from GNU 'Make' (2015, ISBN:978-9881443519) and 'drake' (2018, <doi:10.21105/joss.00550>).",
