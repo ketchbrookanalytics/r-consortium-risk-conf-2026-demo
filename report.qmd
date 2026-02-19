@@ -3,7 +3,7 @@ title: Probability of Default Model Validation Report
 subtitle: For Company ABC
 ---
 
-## Executive Summary {#sec-executive-summaryt}
+## Executive Summary {#sec-executive-summary}
 
 {{< include /qmd/_01_executive_summary.qmd >}}
 
